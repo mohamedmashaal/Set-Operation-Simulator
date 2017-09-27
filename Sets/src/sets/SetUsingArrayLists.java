@@ -118,6 +118,12 @@ public class SetUsingArrayLists implements Set{
                 data.add(new ArrayList<String>());
         }
         }
+        currentMax = max ;
+    }
+
+    @Override
+    public boolean uniContains(String element) {
+        return data.get(0).contains(element) ;
     }
     
 }

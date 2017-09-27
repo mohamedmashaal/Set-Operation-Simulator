@@ -17,7 +17,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * Creates new form MainWindow
      */
-    private SetUsingHashSet theSet ;
+    //private SetUsingHashSet theSet ;
     private SetUsingArrayLists theSet2 ;
     public MainWindow() {
         initComponents();
@@ -212,10 +212,6 @@ public class MainWindow extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(setNum_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -224,7 +220,12 @@ public class MainWindow extends javax.swing.JFrame {
                                             .addComponent(setNum_Add_Delete)
                                             .addComponent(elementField))))
                                 .addGap(14, 14, 14))
-                            .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -342,11 +343,16 @@ public class MainWindow extends javax.swing.JFrame {
         String element = elementField.getText();
         //elementField.setText("");
         Integer setIndex = Integer.parseInt(setNum_Add_Delete.getText());
+        System.out.println(theSet2.getMax());
         if(setIndex > theSet2.getMax()){
             JOptionPane.showMessageDialog(null, "Wrong Set Number .. Maybe you should increase the Max");
         }
+        else if (!theSet2.uniContains(element) && setIndex != 0){
+            JOptionPane.showMessageDialog(null, "Are you Kidding me !! ... It's not even in the Universe Set How is that even possible !");
+        }
+        else{
         //setNum_Add_Delete.setText("");
-        theSet2.addElement(setIndex, element);
+        theSet2.addElement(setIndex, element);}
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void removeButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButton
@@ -419,7 +425,7 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         Integer max = Integer.parseInt(maxInput.getText());
         maxInput.setText("");
-        theSet.setMax(max);
+        theSet2.setMax(max);
     }//GEN-LAST:event_maxButtonActionPerformed
 
     /**

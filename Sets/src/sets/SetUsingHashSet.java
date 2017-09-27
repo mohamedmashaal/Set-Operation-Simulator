@@ -123,6 +123,12 @@ public class SetUsingHashSet implements Set{
                 data.add(new HashSet<String>());
         }
         }
+        currentMax = max ;
+    }
+    
+        @Override
+    public boolean uniContains(String element) {
+        return data.get(0).contains(element) ;
     }
     
 }

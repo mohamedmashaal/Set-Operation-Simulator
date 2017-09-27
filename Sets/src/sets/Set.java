@@ -19,4 +19,5 @@ public interface Set {
     public String complement (int index);
     public int getMax();
     public void setMax(int max);
+    public boolean uniContains(String element);
 }
